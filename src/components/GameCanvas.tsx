@@ -129,7 +129,7 @@ export function GameCanvas({
   }, [paused]);
 
   return (
-    <div className="relative w-full h-full flex items-center justify-center bg-[#0a0e14]">
+    <div className="relative w-full h-full flex items-center justify-center bg-cream">
       <canvas ref={canvasRef} className="block max-w-full max-h-full" />
 
       {/* Touch controls */}
@@ -139,7 +139,7 @@ export function GameCanvas({
         </div>
       )}
       <button
-        className="absolute top-2 right-2 md:hidden text-xs text-slate-400 bg-slate-800/80 px-2 py-1 rounded"
+        className="absolute top-2 right-2 md:hidden text-xs font-semibold text-navy bg-white border border-line shadow-soft px-3 py-1.5 rounded-full"
         onClick={() => setTouchActive(!touchActive)}
       >
         {touchActive ? 'Hide' : 'Show'} Controls
@@ -151,7 +151,7 @@ export function GameCanvas({
 function TouchControls({ onPress }: { onPress: (dx: number, dy: number) => void }) {
   const btn = (label: string, dx: number, dy: number) => (
     <button
-      className="w-12 h-12 bg-slate-800/80 text-slate-300 rounded-lg flex items-center justify-center active:bg-slate-700 text-xl font-bold"
+      className="w-12 h-12 bg-white border border-line shadow-soft text-navy rounded-full flex items-center justify-center active:bg-brand-tint text-xl font-bold"
       onPointerDown={(e) => {
         e.preventDefault();
         onPress(dx, dy);

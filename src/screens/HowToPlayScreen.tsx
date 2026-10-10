@@ -6,17 +6,17 @@ interface HowToPlayProps {
 
 export function HowToPlayScreen({ onBack }: HowToPlayProps) {
   return (
-    <div className="min-h-screen bg-[#0a0e14] text-slate-200 p-6 overflow-y-auto">
+    <div className="page">
       <div className="max-w-2xl mx-auto">
         <button
           onClick={onBack}
-          className="flex items-center gap-2 text-slate-400 hover:text-sky-400 transition-colors mb-8 font-mono text-sm"
+          className="btn-ghost -ml-4 mb-8"
         >
           <ArrowLeft size={16} /> Back to Menu
         </button>
 
-        <h1 className="text-3xl font-black font-mono text-slate-100 mb-2">HOW TO PLAY</h1>
-        <div className="h-px w-32 bg-sky-500 mb-8" />
+        <h1 className="text-4xl sm:text-5xl font-semibold text-navy tracking-tight mb-2">HOW TO PLAY</h1>
+        <div className="h-1 w-12 rounded-full bg-blush mb-8" />
 
         <div className="space-y-6">
           <Section
@@ -62,9 +62,9 @@ export function HowToPlayScreen({ onBack }: HowToPlayProps) {
           />
         </div>
 
-        <div className="mt-8 bg-slate-900/60 border border-slate-700 rounded-lg p-4">
-          <h3 className="text-sky-400 font-mono text-sm mb-2">SCORING</h3>
-          <div className="grid grid-cols-2 gap-2 text-xs font-mono text-slate-400">
+        <div className="mt-8 card p-4">
+          <h3 className="font-display text-xl font-semibold text-navy mb-2">SCORING</h3>
+          <div className="grid grid-cols-2 gap-2 text-sm text-body">
             <span>Puzzle Solved: +400</span>
             <span>Fragment: +100</span>
             <span>Combo Bonus: ×multiplier</span>
@@ -74,9 +74,9 @@ export function HowToPlayScreen({ onBack }: HowToPlayProps) {
           </div>
         </div>
 
-        <div className="mt-6 bg-slate-900/60 border border-slate-700 rounded-lg p-4">
-          <h3 className="text-orange-400 font-mono text-sm mb-2">DAMAGE VALUES</h3>
-          <div className="grid grid-cols-2 gap-2 text-xs font-mono text-slate-400">
+        <div className="mt-6 card p-4">
+          <h3 className="font-display text-xl font-semibold text-danger mb-2">DAMAGE VALUES</h3>
+          <div className="grid grid-cols-2 gap-2 text-sm text-body">
             <span>Drone Collision: -20%</span>
             <span>Laser Hit: -15%</span>
             <span>Firewall: -15%</span>
@@ -88,9 +88,9 @@ export function HowToPlayScreen({ onBack }: HowToPlayProps) {
 
         <button
           onClick={onBack}
-          className="mt-8 w-full bg-sky-600/20 border border-sky-500 text-sky-300 hover:bg-sky-600/30 rounded-lg py-3 font-mono text-sm transition-colors"
+          className="mt-8 w-full btn-primary"
         >
-          GOT IT — Back to Menu
+          Got it, back to menu
         </button>
       </div>
     </div>
@@ -109,22 +109,22 @@ function Section({
   description: string;
 }) {
   return (
-    <div className="bg-slate-900/40 border border-slate-800 rounded-lg p-5">
+    <div className="card p-5">
       <div className="flex items-center justify-between mb-2">
-        <span className="text-xs font-mono text-sky-500 uppercase tracking-widest">{label}</span>
+        <span className="text-xs font-bold text-blush uppercase tracking-widest">{label}</span>
         <div className="flex gap-1.5">
           {keys.map((k) => (
             <kbd
               key={k}
-              className="px-2 py-1 bg-slate-800 border border-slate-600 rounded text-xs font-mono text-slate-300"
+              className="px-2.5 py-1 bg-cream border border-line rounded-lg text-xs font-bold text-navy"
             >
               {k}
             </kbd>
           ))}
         </div>
       </div>
-      <h3 className="text-slate-200 font-mono text-sm mb-1">{title}</h3>
-      <p className="text-slate-400 text-sm leading-relaxed">{description}</p>
+      <h3 className="font-display text-lg font-semibold text-navy mb-1">{title}</h3>
+      <p className="text-body text-sm leading-relaxed">{description}</p>
     </div>
   );
 }

@@ -25,23 +25,23 @@ export function HUD({
   const secs = Math.floor(Math.max(0, time) % 60);
   const timeStr = `${mins}:${secs.toString().padStart(2, '0')}`;
   const timeWarn = time < 15;
-  const integrityColor = integrity > 60 ? '#22c55e' : integrity > 30 ? '#fbbf24' : '#ef4444';
+  const integrityColor = integrity > 60 ? '#28A27D' : integrity > 30 ? '#F6A35C' : '#E8507A';
 
   return (
     <>
       {/* Top bar */}
       <div className="absolute top-0 left-0 right-0 z-10 pointer-events-none">
-        <div className="flex items-start justify-between p-3 gap-2 text-xs sm:text-sm font-mono">
+        <div className="flex items-start justify-between p-3 gap-2 text-xs sm:text-sm">
           {/* Left: level + integrity */}
           <div className="flex flex-col gap-1.5">
-            <div className="bg-slate-900/85 backdrop-blur-sm border border-slate-700/50 rounded-lg px-3 py-1.5">
-              <div className="text-slate-500 text-[10px] uppercase tracking-wider">Level {level}</div>
-              <div className="text-sky-400 font-bold text-sm">{stageName}</div>
+            <div className="bg-white/95 border border-line rounded-2xl shadow-soft px-3 py-1.5">
+              <div className="text-muted text-[10px] font-bold uppercase tracking-wider">Level {level}</div>
+              <div className="font-display text-navy font-semibold text-sm">{stageName}</div>
             </div>
-            <div className="bg-slate-900/85 backdrop-blur-sm border border-slate-700/50 rounded-lg px-3 py-1.5">
-              <div className="text-slate-500 text-[10px] uppercase tracking-wider">Integrity</div>
+            <div className="bg-white/95 border border-line rounded-2xl shadow-soft px-3 py-1.5">
+              <div className="text-muted text-[10px] font-bold uppercase tracking-wider">Integrity</div>
               <div className="flex items-center gap-2">
-                <div className="w-20 h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div className="w-20 h-2 bg-line rounded-full overflow-hidden">
                   <div
                     className="h-full rounded-full transition-all duration-300"
                     style={{ width: `${integrity}%`, backgroundColor: integrityColor }}
@@ -55,10 +55,10 @@ export function HUD({
           </div>
 
           {/* Center: time */}
-          <div className="bg-slate-900/85 backdrop-blur-sm border border-slate-700/50 rounded-lg px-4 py-1.5 text-center">
-            <div className="text-slate-500 text-[10px] uppercase tracking-wider">System Collapse</div>
+          <div className="bg-white/95 border border-line rounded-2xl shadow-soft px-4 py-1.5 text-center">
+            <div className="text-muted text-[10px] font-bold uppercase tracking-wider">System Collapse</div>
             <div
-              className={`font-bold text-lg tabular-nums ${timeWarn ? 'text-red-400 animate-pulse' : 'text-slate-200'}`}
+              className={`font-display font-semibold text-lg tabular-nums ${timeWarn ? 'text-danger' : 'text-navy'}`}
             >
               {timeStr}
             </div>
@@ -67,20 +67,20 @@ export function HUD({
           {/* Right: score + pause */}
           <div className="flex flex-col gap-1.5 items-end">
             <div className="flex gap-2">
-              <div className="bg-slate-900/85 backdrop-blur-sm border border-slate-700/50 rounded-lg px-3 py-1.5 text-right">
-                <div className="text-slate-500 text-[10px] uppercase tracking-wider">Score</div>
-                <div className="text-amber-400 font-bold tabular-nums text-sm">{score.toLocaleString()}</div>
+              <div className="bg-white/95 border border-line rounded-2xl shadow-soft px-3 py-1.5 text-right">
+                <div className="text-muted text-[10px] font-bold uppercase tracking-wider">Score</div>
+                <div className="font-display text-navy font-semibold tabular-nums text-sm">{score.toLocaleString()}</div>
               </div>
               <button
                 onClick={onPause}
-                className="pointer-events-auto bg-slate-900/85 backdrop-blur-sm border border-slate-700/50 rounded-lg px-3 py-1.5 text-slate-400 hover:text-slate-200 transition-colors flex items-center"
+                className="pointer-events-auto bg-white/95 border border-line rounded-2xl shadow-soft px-3 py-1.5 text-muted hover:text-brand transition-colors flex items-center"
               >
                 <span className="text-lg leading-none">II</span>
               </button>
             </div>
-            <div className="bg-slate-900/85 backdrop-blur-sm border border-slate-700/50 rounded-lg px-3 py-1.5 text-right">
-              <div className="text-slate-500 text-[10px] uppercase tracking-wider">Fragments</div>
-              <div className="text-yellow-400 font-bold tabular-nums text-sm">
+            <div className="bg-white/95 border border-line rounded-2xl shadow-soft px-3 py-1.5 text-right">
+              <div className="text-muted text-[10px] font-bold uppercase tracking-wider">Fragments</div>
+              <div className="font-display text-warning-dark font-semibold tabular-nums text-sm">
                 {fragmentsCollected}/{totalFragments}
               </div>
             </div>
@@ -91,9 +91,9 @@ export function HUD({
       {/* Bottom: combo */}
       {combo > 1 && (
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
-          <div className="bg-slate-900/85 backdrop-blur-sm border border-orange-500/50 rounded-lg px-4 py-2 text-center">
-            <span className="text-[10px] text-slate-500 uppercase tracking-widest">Combo</span>
-            <div className="text-orange-400 font-bold text-xl tabular-nums">×{combo}</div>
+          <div className="bg-white/95 border border-blush/50 rounded-full shadow-soft px-5 py-2 text-center">
+            <span className="text-[10px] font-bold text-muted uppercase tracking-widest">Combo</span>
+            <div className="font-display text-blush font-semibold text-xl tabular-nums">×{combo}</div>
           </div>
         </div>
       )}

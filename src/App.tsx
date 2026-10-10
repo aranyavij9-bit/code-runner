@@ -97,7 +97,7 @@ function App() {
     case 'game':
       if (!game.level) return null;
       return (
-        <div className="fixed inset-0 bg-[#0a0e14] overflow-hidden">
+        <div className="fixed inset-0 bg-cream overflow-hidden">
           <div ref={canvasContainerRef} className="absolute inset-0">
             <GameCanvas
               level={game.level}
@@ -144,7 +144,7 @@ function App() {
         <>
           {/* Render game underneath */}
           {game.level && (
-            <div className="fixed inset-0 bg-[#0a0e14] overflow-hidden opacity-50">
+            <div className="fixed inset-0 bg-cream overflow-hidden opacity-50">
               <div ref={canvasContainerRef} className="absolute inset-0">
                 <GameCanvas
                   level={game.level}
@@ -209,11 +209,11 @@ function App() {
 function AchievementToast({ name }: { name: string }) {
   return (
     <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none">
-      <div className="bg-slate-900 border border-sky-500 rounded-lg px-6 py-4 text-center shadow-2xl animate-pulse">
-        <div className="text-xs text-sky-500 font-mono uppercase tracking-widest mb-1">
-          // achievement_unlocked
+      <div className="card px-7 py-5 text-center shadow-lift animate-fade-in">
+        <div className="text-xs font-bold text-blush uppercase tracking-widest mb-1">
+          Achievement unlocked
         </div>
-        <div className="text-sky-300 font-mono font-bold text-lg">{name}</div>
+        <div className="font-display text-navy font-semibold text-xl">{name}</div>
       </div>
     </div>
   );

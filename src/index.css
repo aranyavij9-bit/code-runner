@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-cream text-body font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: 'SOFT' 100;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white border border-line rounded-3xl shadow-soft;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand text-white font-bold text-sm px-6 py-3 transition-all hover:bg-brand-hover hover:-translate-y-px disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-white border border-line text-navy font-semibold text-sm px-6 py-3 transition-all hover:border-brand hover:text-brand hover:-translate-y-px;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full text-muted font-semibold text-sm px-4 py-2 transition-colors hover:text-brand hover:bg-brand-tint;
+  }
+
+  .eyebrow {
+    @apply text-xs font-bold uppercase tracking-[0.14em] text-muted;
+  }
+
+  .page {
+    @apply min-h-screen bg-cream text-body px-6 py-10 overflow-y-auto animate-fade-in;
+  }
+}

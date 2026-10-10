@@ -398,9 +398,8 @@ export class GameEngine {
             ctx.strokeRect(px + 2, py + 2, cellSize - 4, cellSize - 4);
           }
         } else if (cell.type === 'exit') {
-          // Glowing exit portal
-          const pulse = Math.sin(performance.now() / 300) * 0.15 + 0.85;
-          ctx.fillStyle = `rgba(34, 197, 94, ${pulse * 0.3})`;
+          // Exit portal
+          ctx.fillStyle = `rgba(40, 162, 125, 0.18)`;
           ctx.fillRect(px, py, cellSize, cellSize);
           ctx.strokeStyle = COLORS.exit;
           ctx.lineWidth = 2;
@@ -429,7 +428,7 @@ export class GameEngine {
       ctx.fillStyle = color;
       ctx.fillRect(px + cellSize * 0.2, py + cellSize * 0.2, cellSize * 0.6, cellSize * 0.6);
       // terminal screen
-      ctx.fillStyle = '#000';
+      ctx.fillStyle = '#1F2850';
       ctx.fillRect(px + cellSize * 0.25, py + cellSize * 0.25, cellSize * 0.5, cellSize * 0.3);
       if (!terminal.solved) {
         const blink = Math.sin(performance.now() / 200) > 0;
@@ -458,7 +457,7 @@ export class GameEngine {
       ctx.fillRect(-cellSize * 0.12, -cellSize * 0.12, cellSize * 0.24, cellSize * 0.24);
       ctx.restore();
       // glow
-      ctx.fillStyle = `rgba(251, 191, 36, 0.15)`;
+      ctx.fillStyle = `rgba(233, 162, 59, 0.15)`;
       ctx.beginPath();
       ctx.arc(px, py + bob, cellSize * 0.25, 0, Math.PI * 2);
       ctx.fill();
@@ -480,7 +479,7 @@ export class GameEngine {
     const ppy = offsetY + ry * cellSize + cellSize / 2;
 
     // player glow
-    ctx.fillStyle = `rgba(56, 189, 248, 0.2)`;
+    ctx.fillStyle = `rgba(79, 140, 247, 0.2)`;
     ctx.beginPath();
     ctx.arc(ppx, ppy, cellSize * 0.4, 0, Math.PI * 2);
     ctx.fill();
@@ -549,7 +548,7 @@ export class GameEngine {
         ctx.arc(px, py, cellSize * 0.25, 0, Math.PI * 2);
         ctx.fill();
         // scanning eye
-        ctx.fillStyle = '#fff';
+        ctx.fillStyle = '#FFFFFF';
         ctx.beginPath();
         ctx.arc(px, py, cellSize * 0.1, 0, Math.PI * 2);
         ctx.fill();
@@ -558,7 +557,7 @@ export class GameEngine {
       case 'laser': {
         if (active) {
           // Draw laser beam across the cell and adjacent cells
-          ctx.fillStyle = `rgba(239, 68, 68, 0.3)`;
+          ctx.fillStyle = `rgba(232, 80, 122, 0.3)`;
           ctx.fillRect(px - cellSize * 0.5, py - cellSize * 0.5, cellSize, cellSize);
           ctx.strokeStyle = COLORS.laserBeam;
           ctx.lineWidth = 3;
@@ -575,7 +574,7 @@ export class GameEngine {
           ctx.fill();
         } else {
           // inactive emitter
-          ctx.fillStyle = `rgba(239, 68, 68, 0.3)`;
+          ctx.fillStyle = `rgba(232, 80, 122, 0.3)`;
           ctx.beginPath();
           ctx.arc(px, py, cellSize * 0.12, 0, Math.PI * 2);
           ctx.fill();
@@ -584,21 +583,21 @@ export class GameEngine {
       }
       case 'firewall': {
         if (active) {
-          ctx.fillStyle = `rgba(249, 115, 22, 0.4)`;
+          ctx.fillStyle = `rgba(246, 163, 92, 0.4)`;
           ctx.fillRect(px - cellSize * 0.5, py - cellSize * 0.5, cellSize, cellSize);
           // animated flames
           const flicker = Math.sin(performance.now() / 80) * 2;
           ctx.fillStyle = COLORS.firewall;
           ctx.fillRect(px - cellSize * 0.35, py - cellSize * 0.35 + flicker, cellSize * 0.7, cellSize * 0.7);
         } else {
-          ctx.fillStyle = `rgba(249, 115, 22, 0.15)`;
+          ctx.fillStyle = `rgba(246, 163, 92, 0.15)`;
           ctx.fillRect(px - cellSize * 0.4, py - cellSize * 0.4, cellSize * 0.8, cellSize * 0.8);
         }
         break;
       }
       case 'corruption': {
         // Static corruption zone with visual noise
-        ctx.fillStyle = `rgba(139, 92, 246, 0.2)`;
+        ctx.fillStyle = `rgba(122, 95, 216, 0.2)`;
         ctx.fillRect(px - cellSize * 0.5, py - cellSize * 0.5, cellSize, cellSize);
         // glitchy squares
         for (let i = 0; i < 3; i++) {
@@ -612,7 +611,7 @@ export class GameEngine {
         break;
       }
       case 'sweep': {
-        ctx.fillStyle = `rgba(244, 63, 94, 0.3)`;
+        ctx.fillStyle = `rgba(242, 112, 159, 0.3)`;
         ctx.beginPath();
         ctx.arc(px, py, cellSize * 0.3, 0, Math.PI * 2);
         ctx.fill();
@@ -621,7 +620,7 @@ export class GameEngine {
         ctx.arc(px, py, cellSize * 0.2, 0, Math.PI * 2);
         ctx.fill();
         // sweep trail
-        ctx.strokeStyle = `rgba(244, 63, 94, 0.15)`;
+        ctx.strokeStyle = `rgba(242, 112, 159, 0.15)`;
         ctx.lineWidth = cellSize * 0.15;
         ctx.beginPath();
         if (obs.axis === 'x') {

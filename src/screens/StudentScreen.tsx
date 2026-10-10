@@ -1,4 +1,4 @@
-import { ArrowLeft, Mail, School, Code } from 'lucide-react';
+import { ArrowLeft, Mail, School, Globe } from 'lucide-react';
 
 interface StudentScreenProps {
   onBack: () => void;
@@ -6,39 +6,44 @@ interface StudentScreenProps {
 
 export function StudentScreen({ onBack }: StudentScreenProps) {
   return (
-    <div className="min-h-screen bg-[#0a0e14] text-slate-200 p-6 overflow-y-auto">
+    <div className="page">
       <div className="max-w-2xl mx-auto">
         <button
           onClick={onBack}
-          className="flex items-center gap-2 text-slate-400 hover:text-sky-400 transition-colors mb-6 font-mono text-sm"
+          className="btn-ghost -ml-4 mb-6"
         >
           <ArrowLeft size={16} /> Back to Menu
         </button>
 
-        <div className="text-xs text-sky-500/60 font-mono uppercase tracking-[0.3em] mb-2">
-          // project_author
+        <div className="text-xs font-bold text-blush uppercase tracking-widest mb-2">
+          Project author
         </div>
-        <h1 className="text-3xl font-black font-mono text-slate-100 mb-6">STUDENT</h1>
-        <div className="h-px w-32 bg-sky-500 mb-8" />
+        <h1 className="text-4xl sm:text-5xl font-semibold text-navy tracking-tight mb-6">STUDENT</h1>
+        <div className="h-1 w-12 rounded-full bg-blush mb-8" />
 
         {/* Profile card */}
-        <div className="bg-gradient-to-br from-slate-900 to-slate-900/40 border border-slate-700 rounded-xl p-6 mb-6">
+        <div className="card p-7 mb-6">
           <div className="flex items-start gap-4">
-            <div className="w-16 h-16 bg-sky-600/20 border border-sky-600/50 rounded-xl flex items-center justify-center flex-shrink-0">
-              <Code size={28} className="text-sky-400" />
-            </div>
             <div className="flex-1">
-              <h2 className="text-2xl font-bold text-slate-100">Aranya Vij</h2>
-              <p className="text-sky-400 font-mono text-sm mt-1">Computer Science Applicant</p>
-              <div className="flex flex-col gap-1.5 mt-3 text-sm text-slate-400">
+              <h2 className="text-3xl font-semibold text-navy">Aranya Vij</h2>
+              <p className="text-brand font-semibold text-sm mt-1">Computer Science Applicant</p>
+              <div className="flex flex-col gap-1.5 mt-3 text-sm text-body">
                 <span className="flex items-center gap-2">
-                  <School size={14} className="text-slate-500" /> Redmond High School
+                  <School size={14} className="text-muted" /> Redmond High School
                 </span>
                 <a
                   href="mailto:aranyavij9@gmail.com"
-                  className="flex items-center gap-2 hover:text-sky-400 transition-colors"
+                  className="flex items-center gap-2 hover:text-brand transition-colors"
                 >
-                  <Mail size={14} className="text-slate-500" /> aranyavij9@gmail.com
+                  <Mail size={14} className="text-muted" /> aranyavij9@gmail.com
+                </a>
+                <a
+                  href="https://aranyavij.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:text-brand transition-colors"
+                >
+                  <Globe size={14} className="text-muted" /> aranyavij.com
                 </a>
               </div>
             </div>
@@ -46,9 +51,9 @@ export function StudentScreen({ onBack }: StudentScreenProps) {
         </div>
 
         {/* About the project */}
-        <div className="bg-slate-900/40 border border-slate-800 rounded-lg p-5 mb-6">
-          <h3 className="text-sky-400 font-mono text-sm mb-3 uppercase tracking-wider">About the Project</h3>
-          <blockquote className="text-slate-300 text-sm leading-relaxed italic border-l-2 border-sky-600/50 pl-4">
+        <div className="card p-5 mb-6">
+          <h3 className="font-display text-xl font-semibold text-navy mb-3">About the Project</h3>
+          <blockquote className="font-display text-navy text-lg leading-relaxed italic border-l-2 border-blush pl-4">
             "I designed Escape Protocol as an experiment in combining computational thinking with
             interactive game mechanics. The project helped me explore procedural generation, game
             state management, logic systems, and player interaction."
@@ -56,8 +61,8 @@ export function StudentScreen({ onBack }: StudentScreenProps) {
         </div>
 
         {/* What I explored */}
-        <div className="bg-slate-900/40 border border-slate-800 rounded-lg p-5 mb-6">
-          <h3 className="text-sky-400 font-mono text-sm mb-3 uppercase tracking-wider">What I Explored</h3>
+        <div className="card p-5 mb-6">
+          <h3 className="font-display text-xl font-semibold text-navy mb-3">What I Explored</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {[
               'Procedural generation',
@@ -69,9 +74,9 @@ export function StudentScreen({ onBack }: StudentScreenProps) {
             ].map((item) => (
               <div
                 key={item}
-                className="flex items-center gap-2 text-sm text-slate-400 font-mono"
+                className="flex items-center gap-2 text-sm text-body"
               >
-                <span className="w-1.5 h-1.5 bg-sky-500 rounded-full" />
+                <span className="w-1.5 h-1.5 bg-brand rounded-full" />
                 {item}
               </div>
             ))}
@@ -79,9 +84,9 @@ export function StudentScreen({ onBack }: StudentScreenProps) {
         </div>
 
         {/* Technical concepts */}
-        <div className="bg-slate-900/40 border border-slate-800 rounded-lg p-5">
-          <h3 className="text-sky-400 font-mono text-sm mb-3 uppercase tracking-wider">Technical Concepts Implemented</h3>
-          <div className="space-y-2 text-sm text-slate-400">
+        <div className="card p-5">
+          <h3 className="font-display text-xl font-semibold text-navy mb-3">Technical Concepts Implemented</h3>
+          <div className="space-y-2 text-sm text-body">
             <Concept
               term="Procedural Level Generation"
               desc="Seeded RNG + BFS connectivity verification ensures every generated level is solvable."
@@ -111,9 +116,9 @@ export function StudentScreen({ onBack }: StudentScreenProps) {
 
 function Concept({ term, desc }: { term: string; desc: string }) {
   return (
-    <div className="border-l-2 border-slate-700 pl-3">
-      <span className="text-slate-200 font-mono">{term}</span>
-      <p className="text-xs text-slate-500 mt-0.5">{desc}</p>
+    <div className="border-l-2 border-brand-tint pl-3">
+      <span className="text-navy font-bold">{term}</span>
+      <p className="text-xs text-muted mt-0.5">{desc}</p>
     </div>
   );
 }

@@ -13,25 +13,25 @@ export function AchievementsScreen({ profile, onBack }: AchievementsScreenProps)
   const earnedCount = ACHIEVEMENTS.filter((a) => earned.has(a.id)).length;
 
   return (
-    <div className="min-h-screen bg-[#0a0e14] text-slate-200 p-6 overflow-y-auto">
+    <div className="page">
       <div className="max-w-2xl mx-auto">
         <button
           onClick={onBack}
-          className="flex items-center gap-2 text-slate-400 hover:text-sky-400 transition-colors mb-6 font-mono text-sm"
+          className="btn-ghost -ml-4 mb-6"
         >
           <ArrowLeft size={16} /> Back to Menu
         </button>
 
         <div className="flex items-baseline justify-between mb-6">
-          <h1 className="text-3xl font-black font-mono text-slate-100">ACHIEVEMENTS</h1>
-          <span className="text-slate-500 font-mono text-sm">
+          <h1 className="text-4xl sm:text-5xl font-semibold text-navy tracking-tight">ACHIEVEMENTS</h1>
+          <span className="text-muted text-sm">
             {earnedCount}/{ACHIEVEMENTS.length}
           </span>
         </div>
-        <div className="h-px w-32 bg-sky-500 mb-2" />
-        <div className="w-full h-2 bg-slate-800 rounded-full mb-6 overflow-hidden">
+        <div className="h-1 w-12 rounded-full bg-blush mb-2" />
+        <div className="w-full h-2 bg-line rounded-full mb-6 overflow-hidden">
           <div
-            className="h-full bg-sky-500 rounded-full transition-all"
+            className="h-full bg-brand rounded-full transition-all"
             style={{ width: `${(earnedCount / ACHIEVEMENTS.length) * 100}%` }}
           />
         </div>
@@ -43,36 +43,36 @@ export function AchievementsScreen({ profile, onBack }: AchievementsScreenProps)
             return (
               <div
                 key={ach.id}
-                className={`flex items-center gap-3 p-4 rounded-lg border transition-all ${
+                className={`flex items-center gap-4 p-5 rounded-3xl border transition-all ${
                   isEarned
-                    ? 'bg-sky-950/30 border-sky-600/50'
-                    : 'bg-slate-900/40 border-slate-800 opacity-60'
+                    ? 'bg-white border-brand/40 shadow-soft'
+                    : 'bg-white/60 border-line opacity-70'
                 }`}
               >
                 <div
-                  className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                    isEarned ? 'bg-sky-600/20 text-sky-400' : 'bg-slate-800 text-slate-600'
+                  className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${
+                    isEarned ? 'bg-brand-tint text-brand' : 'bg-cream text-muted'
                   }`}
                 >
                   {isEarned ? <IconComp size={20} /> : <LucideIcons.Lock size={18} />}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className={`font-mono text-sm font-bold ${isEarned ? 'text-slate-200' : 'text-slate-500'}`}>
+                  <h3 className={`text-sm font-bold ${isEarned ? 'text-navy' : 'text-muted'}`}>
                     {ach.name}
                   </h3>
-                  <p className={`text-xs ${isEarned ? 'text-slate-400' : 'text-slate-600'}`}>
+                  <p className={`text-xs ${isEarned ? 'text-body' : 'text-muted'}`}>
                     {ach.description}
                   </p>
                 </div>
-                {isEarned && <Check size={16} className="text-sky-400 flex-shrink-0" />}
+                {isEarned && <Check size={16} className="text-success flex-shrink-0" />}
               </div>
             );
           })}
         </div>
 
         {/* Profile stats */}
-        <div className="mt-8 bg-slate-900/60 border border-slate-700 rounded-lg p-5">
-          <h3 className="text-sky-400 font-mono text-sm mb-4">PLAYER STATS</h3>
+        <div className="mt-8 card p-5">
+          <h3 className="font-display text-xl font-semibold text-navy mb-4">PLAYER STATS</h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-center">
             <Stat label="High Score" value={profile.highestScore.toLocaleString()} />
             <Stat label="Levels Done" value={String(profile.levelsCompleted)} />
@@ -90,8 +90,8 @@ export function AchievementsScreen({ profile, onBack }: AchievementsScreenProps)
 function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <div className="text-slate-500 text-[10px] font-mono uppercase tracking-wider">{label}</div>
-      <div className="text-slate-200 font-mono font-bold text-lg">{value}</div>
+      <div className="eyebrow text-[10px]">{label}</div>
+      <div className="font-display text-navy font-semibold text-2xl">{value}</div>
     </div>
   );
 }
